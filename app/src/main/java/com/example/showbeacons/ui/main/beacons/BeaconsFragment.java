@@ -1,8 +1,5 @@
 package com.example.showbeacons.ui.main.beacons;
 
-
-
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.showbeacons.R;
+import com.example.showbeacons.databinding.FragmentBeaconsBinding;
 
 public class BeaconsFragment extends Fragment {
 
-    private Context context;
+    private FragmentBeaconsBinding binding;
 
     @NonNull
     public static BeaconsFragment newInstance() {
@@ -27,8 +24,29 @@ public class BeaconsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_beacons, container, false);
-        context = getActivity();
-        return view;
+        binding = FragmentBeaconsBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.search.setOnClickListener(v -> {
+
+        });
+        binding.clean.setOnClickListener(v -> {
+
+        });
+        binding.stop.setOnClickListener(v -> {
+
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
 }
